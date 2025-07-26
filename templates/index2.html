@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  .image-button {
+    width: 350px;
+    height: 350px;
+    background-image: url("{{ url_for('static', filename='images.jpg') }}"); /* your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+
+  .image-button:hover {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+  }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 350px); /* adjust as needed */
+      gap: 10px;
+      padding: 10px;
+      background-color: GRAY; /* light gray background for the whole grid */
+    }
+
+    .block {
+      border: 2px solid black;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .block video, .block canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+<div class="grid-container">
+
+  <!-- Block 1 with camera -->
+  <div class="block" id="block1">
+    <video id="video" autoplay></video>
+    <canvas id="canvas" style="display: none;"></canvas>
+    <script src="{{ url_for('static', filename='capture.js') }}"></script>
+  </div>
+
+  <!-- Block 2 with capture button -->
+  <div class="block">
+    Block 2<br>
+    <button onclick="captureImage()">📸 Capture Image</button>
+
+  </div>
+
+  <!-- Block 3 triggers capture and alert -->
+  <div class="block">
+  <button class="image-button" onclick="captureImage()"></button>
+    Block 3
+  </div>
+
+  <!-- Block 4 with stop button -->
+  <div class="block">
+    Block 4<br>
+    {{my_number}}
+    {{number}}
+
+    <button onclick="stopCamera()">❌ Close Camera</button>
+  </div>
+
+</div>
+
+</body>
+</html>
