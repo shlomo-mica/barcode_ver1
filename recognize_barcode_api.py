@@ -17,7 +17,7 @@ api_response = {'key': 'value'}  # Replace this with your actual respons
 
 # Configure API key authorization: Apikey
 configuration = cloudmersive_barcode_api_client.Configuration()
-configuration.api_key['Apikey'] = '9fa74e71-bc0c-40df-9593-ef8d9c661d68'
+configuration.api_key['Apikey'] = 'aaaaaaa'
 
 # create an instance of the API class
 api_instance = cloudmersive_barcode_api_client.BarcodeScanApi(cloudmersive_barcode_api_client.ApiClient(configuration))
